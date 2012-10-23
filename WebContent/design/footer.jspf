@@ -1,0 +1,18 @@
+  <hr>
+
+  <footer>
+        <p>&copy; ESIEA 2012 <br/> Designed by SAID OMAR Mahamoud and FAUSTHER Ulrich</p>
+  </footer>
+
+    
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="design/js/jquery-1.8.2.js"></script>
+    <script src="design/js/bootstrap.js"></script>
+    <script src="design/js/bootstrap-modal.js"></script>
+    
+
+  </body>
+</html>

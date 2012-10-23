@@ -1,0 +1,153 @@
+<%@ page import="java.util.Hashtable" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="fr.spring.objects.Pays" %>
+<%@ page import="fr.spring.objects.Annonce"%>
+<%@ page import="fr.spring.objects.Categorie"%>
+<%@ page import="fr.spring.objects.Membre"%>
+<%@ page import="fr.spring.objects.StatementMysql" %>
+<%@ page import="fr.spring.model.BDDModel" %>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>ESIEA WEB PROG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="design/css/bootstrap.css" />
+    <link rel="stylesheet" href="design/css/bootstrap-responsive.css" >
+    
+       
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+ 
+  </head>
+
+  <body>
+
+  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          
+          <!--  Verify if the user is connected before display the annonce form -->
+          <% String username = (String)request.getSession().getAttribute("userName"); %>
+          
+          
+          <% if(username == null){
+            	%> 
+            	<a  class="brand btn" href="connection.html">Passer une annonce ! &raquo;</a>
+            	<%
+            }
+            else{
+            	%> 
+            	<a class="brand btn" href="passerAnnonce.html">Passer une annonce ! &raquo;</a>            	
+            	<%
+            }
+          %> 
+          
+                   
+          <div class="nav-collapse collapse">
+                       
+            <p class="navbar-text pull-right">
+            <% if(username == null){
+            	%><a href="connection.html" class="navbar-link">Sign in</a>
+            	<%
+            }
+            else{
+            	%>Logged in as <a href="monCompte.html?tab=account" class="navbar-link"><%=username%></a>
+            	<wbr/>
+              	<a href="deconnect.html"><i class="icon-remove icon-white navbar-link"></i> </a>
+            	<%
+            }
+            %>            
+            </p>
+                  
+            <ul class="nav">
+              <li><a href="index.jsp"><i class="icon-home icon-white"></i> Home</a></li>
+              <li><a href="inscription.html"><i class="icon-pencil icon-white"></i> S'inscrire</a></li>
+              <li><a href="" onClick="showModal()" data-toggle="modal"><i class="icon-info-sign icon-white"></i> About Us</a></li>	           	  
+            </ul>
+            
+            
+    		
+            
+            
+            <!-- Modal -->
+    		<div class="modal hide fade" id="myModal" tabindex="-1" >
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" >×</button>
+    				<h3 id="myModalLabel">A Propos</h3>
+    			</div>
+    		
+    			<div class="modal-body">
+    				<h2>AKOYOKA!</h2>
+            		<p>
+            			This is a template for a simple marketing or informational website. It includes a large callout 
+            			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+            			something more unique.
+            		</p>
+    			</div>
+    		
+    			<div class="modal-footer">
+    				<button class="btn" data-dismiss="modal" >Close</button>
+    				<button class="btn btn-primary">Save changes</button>
+    			</div>
+    		</div>
+		
+ 
+      </div><!--/.fluid-container-->
+
+ 		<script type="text/javascript"> 
+ 		
+	      function closeModal(){
+	    	  
+	    	  $('#myModal').modal('hide');
+	      }
+	      
+	      function showModal(){	    	  
+	    	  $('#myModal').modal('show');
+	    	  
+	      }
+  
+	  </script>
+            
+            
+            
+            
+            
+            
+            <form class="form-search">
+		      <input type="text" class="input-medium search-query" placeholder="Rechercher...">
+		      <button type="submit" class="btn" >Recherche</button>
+		    </form>
+		    
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>  
+      
+      
+  
