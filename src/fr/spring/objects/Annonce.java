@@ -18,6 +18,13 @@ public class Annonce {
 	private int checked;
 	
 	
+	
+	public Annonce() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Annonce(int id_annonce, String nom_categorie, String nom_pays, String nom_ville,
 			String login_membre, String nom_auteur, String prenom_auteur,
 			String tel_auteur, String email_auteur, String publication,

@@ -1,6 +1,7 @@
 package fr.spring.controller;
 
 
+import java.util.Collection;
 import java.util.Hashtable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,16 +44,19 @@ public class finishConnectionController {
 				model = mesMembres.BuildModelMembre(query, StatementMysql.stat);			
 			    	// ******** //
 				
-				if(model.values().isEmpty()){
-					
+				Collection<Membre> monMembre = model.values();
+				Membre profil = new Membre();		
+				
+				for(Membre m:monMembre){
+					profil = m;
 				}
-				else{
+				
+				if(model.values().isEmpty()==false){
 					HttpSession session = request.getSession();				
 					session.setAttribute("userName", login);
-					
-				}
-				
-				
+					session.setAttribute("autorisation",profil.getAdmin());
+				}				
+								
 				
 
 		    	// To the View

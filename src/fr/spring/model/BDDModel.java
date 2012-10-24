@@ -21,7 +21,7 @@ public class BDDModel implements IModel{
 		// TODO Auto-generated method stub
 
     	ResultSet r = null;
-    	Hashtable<Integer, Contact> model = new Hashtable<>();
+    	Hashtable<Integer, Contact> model = new Hashtable<Integer, Contact>();
     	
     	try {
     		// Execute a query	
@@ -47,7 +47,7 @@ public class BDDModel implements IModel{
 		// TODO Auto-generated method stub
 		
 		ResultSet r = null;
-    	Hashtable<Integer, Pays> model = new Hashtable<>();
+    	Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();
     	
     	try {
     		// Execute a query	
@@ -184,8 +184,12 @@ public class BDDModel implements IModel{
 			int i = 0;
 			// Fill Map (model)
 			while(r.next()){
-	    		model.put(i, new Membre(r.getInt("Id_Membre"),r.getString("Nom_Pays"),r.getString("Nom"),r.getString("Prenom"),
-	    				r.getString("Pseudo"),r.getString("Birth"),r.getString("Email"),r.getString("Password")));
+				
+				
+				model.put(i, new Membre(r.getInt("Id_Membre"),r.getString("Nom_Pays"), r.getString("Nom_Ville"),
+	    			r.getString("Nom"),r.getString("Prenom"),r.getString("Pseudo"),r.getString("Birth"),r.getString("Email"),
+	    			r.getString("Tel"),r.getString("Password"),r.getString("Type"),r.getString("Autorisation")));
+									
 	    		i+=1;
 	    	}
 		} catch (SQLException e) {

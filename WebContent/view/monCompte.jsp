@@ -1,9 +1,11 @@
+<%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@ include file="/design/header.jspf" %>
 
 <%
 		Hashtable<String, Object> model = new Hashtable<String, Object>();
 		Hashtable<Integer, Membre> modelMembre = new Hashtable<Integer, Membre>();
-		Hashtable<Integer, Annonce> modelAnnonce = new Hashtable<Integer, Annonce>();;
+		Hashtable<Integer, Annonce> modelAnnonce = new Hashtable<Integer, Annonce>();
+		Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();;
 		
 		model = (Hashtable<String, Object>)request.getAttribute("bdd");
 		
@@ -11,15 +13,16 @@
 		
 		modelAnnonce = (Hashtable<Integer, Annonce>)model.get("annonces");
 		
+		modelPays = (Hashtable<Integer, Pays>)model.get("pays");
+		
+	
 		Collection<Membre> monMembre = modelMembre.values();
 		Collection<Annonce> mesAnnonces = modelAnnonce.values();
+		Collection<Pays> mesPays  = modelPays.values();
 		
-		String nom= new String();
-		String prenom= new String();
-		String pseudo= new String();
-		String birth= new String();
-		String email= new String();
-		String pays= new String();
+		
+		Membre profil = new Membre();
+
 		
 		String date= new String();
 		String titre= new String();
@@ -28,23 +31,16 @@
 		String nomContact= new String();
 		int prix= 0;
 		
-		for(Membre m:monMembre){
-			nom=m.getNom();
-			prenom=m.getPrenom();
-			pseudo=m.getPseudo();
-			birth=m.getBirth();
-			email=m.getEmail();
-			pays=m.getNom_pays();	
-		}
-		
+		for(Membre m:monMembre){			
+			profil = m;			
+		}				
 		
   %>
     
 
 <script type="text/javascript"> 
  		
-	      function closeModalModifAccount(){
-	    	  
+	      function closeModalModifAccount(){    	  
 	    	  $('#modalModifAccount').modal('hide');
 	      }
 	      
@@ -52,102 +48,7 @@
 	    	  $('#modalModifAccount').modal('show');
 	    	  
 	      }
-</script>
-
-<script type="text/javascript"> 
- 		
-	      function closeModalModifAnnonce(){
-	    	  
-	    	  $('#modalModifAnnonce').modal('hide');
-	      }
-	      
-	      function showModalModifAnnonce(){	    	  
-	    	  $('#modalModifAnnonce').modal('show');
-	    	  
-	      }
-</script>
-
-
-<!-- Modal annonce modification -->
-<div class="modal hide fade" id="modalModifAnnonce" style="display: none;" >
-	
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" >x</button>
-			<h3 id="myModalLabel">Mon Annonce</h3>
-		</div>
-	
-		<div class="modal-body">
-		
-			<form class="form-horizontal" method="post" action="finishModifAccount.html">
-
-			<fieldset>
-					
-				<legend>Modification de l'annonce</legend> <!-- Titre du fieldset -->												
-							
-				<div class="control-group">
-					<label class="control-label" for="nom">Titre</label>
-					<div class="controls">
-						<input type="text" name="titre" id="titre" value="" required/>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<label class="control-label" for="prenom">Description</label>
-					<div class="controls">
-						<input type="text" name="prenom" id="prenom" value="" required/>
-					</div>
-				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="inputEmail">Email</label>
-					<div class="controls">
-						<input type="email" id="email" name="email" value="" required/>
-					</div>
-				</div>
-			
-				<div class="control-group">
-					<label class="control-label" for="pwd1">Ancien Mot de passe</label>
-					<div class="controls">
-						<input type="password" name="pwd1" id="pwd1" placeholder="**********" />
-					</div>
-				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="pwd2">Nouveau Mot de passe</label>
-					<div class="controls">
-						<input type="password" name="pwd2" id="pwd2" placeholder="**********" />
-					</div>
-				</div>
-			
-			
-				<div class="control-group">
-					<label class="control-label" for="country">Pays</label>
-					<div class="controls">
-						<select name="country" id="country">
-							<option value="none">Selectionnez votre pays de residence</option>								
-						</select>
-					</div>
-				</div>
-			
-			</fieldset>
-			
-			<div class="control-group">
-    			<div class="controls">			    						    			
-    				<button type="submit" class="btn">Enregistrer</button>
-   				</div>
-    		</div>
-
-		</form>
-  			
-  			</div>
-  		
-  			<div class="modal-footer">    			
-  				<button class="btn" type="reset" data-dismiss="modal" onClick="closeModalModifAnnonce()">Close</button>
-  				<button class="btn btn-primary" type="submit">Save changes</button>
-  			</div>
-</div>          	
-
-
+</script> 	
 
 
 <!-- Modal account modification -->
@@ -169,21 +70,28 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" name="nom" id="nom" value="<%=nom %>" required/>
+						<input type="text" name="nom" id="nom" value="<%=profil.getNom()%>" required/>
 					</div>
 				</div>
 			
 				<div class="control-group">
 					<label class="control-label" for="prenom">Prenom</label>
 					<div class="controls">
-						<input type="text" name="prenom" id="prenom" value="<%=prenom%>" required/>
+						<input type="text" name="prenom" id="prenom" value="<%=profil.getPrenom()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Email</label>
 					<div class="controls">
-						<input type="email" id="email" name="email" value="<%=email%>" required/>
+						<input type="email" id="email" name="email" value="<%=profil.getEmail()%>" required/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="inputTel">Tel</label>
+					<div class="controls">
+						<input type="tel" id="tel" name="tel" value="<%=profil.getTel()%>" required/>
 					</div>
 				</div>
 			
@@ -206,16 +114,49 @@
 					<label class="control-label" for="country">Pays</label>
 					<div class="controls">
 						<select name="country" id="country">
-							<option value="none">Selectionnez votre pays de residence</option>								
+							<option value="<%=profil.getNom_pays() %>"><%=profil.getNom_pays() %></option>
+							<%								
+								// Read database							
+								for(Pays c:mesPays)
+								{																		
+									%>								
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
+									<% 															
+								}																	
+							%>									
 						</select>
 					</div>
 				</div>
+				
+				
+				<div class="control-group">
+					<label class="control-label" for="country">Ville</label>
+					<div class="controls">
+						<select name="city" id="city">
+							<option value="<%=profil.getNom_ville()%>"><%=profil.getNom_ville()%></option>
+							<%								
+								// Read database							
+								for(Pays c:mesPays)
+								{																		
+									%>								
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
+									<% 															
+								}																	
+							%>									
+						</select>
+					</div>
+				</div>
+				
+				
 			
 			</fieldset>
 			
+			  <hr>
+			
 			<div class="control-group">
-    			<div class="controls">			    						    			
-    				<button type="submit" class="btn">Enregistrer</button>
+    			<div class="controls">			    						    			    				
+    				<button class="btn" type="reset" data-dismiss="modal" onClick="closeModalModifAccount()">Annuler</button>
+   					<button type="submit" class="btn btn-primary">Enregistrer</button>
    				</div>
     		</div>
 
@@ -224,8 +165,7 @@
   			</div>
   		
   			<div class="modal-footer">    			
-  				<button class="btn" type="reset" data-dismiss="modal" onClick="closeModalModifAccount()">Close</button>
-  				<button class="btn btn-primary" type="submit">Save changes</button>
+  				  				
   			</div>
 </div>
 
@@ -252,55 +192,60 @@
           if(monMembre.isEmpty()==false){
           %>
           	<table class="table table-hover">
-		    <caption><h4><strong>Parametres generaux du compte</strong></h4></caption>
+		    <caption><h4><strong>Parametres generaux du compte</strong></h4>
+		    
+		    </caption>
 		    	<thead>
 		    		<tr>
-		    			<th></th>
-		    			<th></th>
+		    			<th></th>		    			
+		    			<th><a href="#" onClick="showModalModifAccount()">modifier</a></th>
 		    		</tr>
 		    	</thead>
 		    	
 		    	<tbody>
 		    		<tr>
 		    			<td>Nom</td>
-		   				<td><%=nom%></td>
-		   				<td><a href="#" onClick="showModalModifAccount()">modifier</a></td>
+		   				<td><%=profil.getNom()%></td>		   				
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Prenom</td>
-		   				<td><%=prenom%></td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td><%=profil.getPrenom()%></td>		   				
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Pseudo</td>
-		   				<td><%=pseudo%></td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td><%=profil.getPseudo()%></td>		   				
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Date de Naissance</td>
-		   				<td><%=birth%></td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td><%=profil.getBirth()%></td>		   			
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Email</td>
-		   				<td><%=email%></td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td><%=profil.getEmail()%></td>		   				
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Tel</td>
-		   				<td>06 70 83 40 48</td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td><%=profil.getTel()%></td>		   				
 		    		</tr>
 		    		
 		    		<tr>
 		    			<td>Mot de passe</td>
-		   				<td>**********</td>
-		   				<td><a href="#">modifier</a></td>
+		   				<td>**********</td>		   				
+		    		</tr>
+		    		
+		    		<tr>
+		    			<td>Pays</td>
+		   				<td><%=profil.getNom_pays()%></td>		   				
+		    		</tr>
+		    		
+		    		<tr>
+		    			<td>Ville</td>
+		   				<td><%=profil.getNom_ville()%></td>		   				
 		    		</tr>
 		    		
 		    		
@@ -308,19 +253,21 @@
 		    </table> 	
         	<%  
           }
-          if(mesAnnonces.isEmpty()==false){
+          if(mesAnnonces.isEmpty()==false || monMembre.isEmpty()){
           %>
           	<table class="table table-hover">
 		    <caption><h4><strong>Mes annonces</strong></h4></caption>
 		    	<thead>
 		    		<tr>
 		    			<th>Postee le</th>
+		    			<th>Par</th>
 		    			<th>Pays </th>
 		    			<th>Ville </th>
 		    			<th>Titre</th>		    			
 		    			<th>Prix</th>
 		    			<th>Contact</th>
 		    			<th>Email</th>
+		    			
 		    			
 		    		</tr>
 		    	</thead>
@@ -329,34 +276,43 @@
 		    	
 		    		<% 
 		    		for(Annonce a:mesAnnonces){
-		    			%>
+		    			
+		    			if(a.getChecked()==1){%>
+		    				<tr class="success">
+		    			<%}
+		    			else{%>
 		    			<tr>
+		    			<%} %>		    					    			
 			    			<td><%=a.getPublication()%></td>
+			    			<td><%=a.getLogin_membre()%></td>
 			    			<td><%=a.getNom_pays()%></td>
 			    			<td><%=a.getNom_ville()%></td>
 			   				<td><a href="annonce.html?country=<%=a.getNom_pays()%>&title=<%=a.getTitre()%>"><%=a.getTitre()%></a></td>		   				
 			   				<td><%=a.getPrix()%></td>
 			   				<td>Mr <%=a.getNom_auteur()%></td>
-			   				<td><%=a.getEmail_auteur()%></td>		   						
-		   					<td><a href="#"  onClick="showModalModifAnnonce()"><i class="icon-pencil"></i> </a></td>	   				
-		   					<td><a href="#"><i class="icon-trash"></i> </a></td>
-		   			
+			   				<td><%=a.getEmail_auteur()%></td>
+			   						
+			   				<%if(autorisation.equalsIgnoreCase("user")){%>   						
+		   					<td><a href="modifAnnonce.html?id=<%=a.getId_annonce()%>"  ><i class="icon-pencil"></i> </a></td>	   				
+		   					<%}%>
+		   					<%if(autorisation.equalsIgnoreCase("admin")){%>   						
+		   					<td><a href="validateAnnonce.html?id=<%=a.getId_annonce()%>"  ><i class="icon-ok"></i> </a></td>	   				
+		   					<%}%>
+		   					
+		   					
+		   					<td><a href="deleteAnnonce.html?id=<%=a.getId_annonce()%>"><i class="icon-trash"></i> </a></td>		   							   					
+		    				
+		    				<%
+		    				//Si on est en mode administrateur
+		    				if( autorisation.equalsIgnoreCase("admin")){ %>
+		    				<td><a href="mailto:<%=a.getEmail_auteur()%>"><i class="icon-envelope"></i></a></td>
+		    				<% }%>
 		    			</tr>
 	    			
 		    			<%
 		    		}
 		    				    			    		
-		    		%>
-		    		<tr>
-		    			<td>16/10/2012</td>
-		    			<td>Gabon</td>
-		    			<td>Libreville</td>
-		   				<td><a>Vente de Tickets de concert</a></td>		   				
-		   				<td>12000 FCFA</td>
-		   				<td>Mr Fausther</td>
-		   				<td>dblezo@faust.fr</td>
-		   				<td><a href="#">modifier</a></td>
-		    		</tr>
+		    		%>		    		
 		    		
 		    		<tr>
 		    			<td>...</td>
@@ -367,25 +323,37 @@
 		   				<td>...</td>
 		   				<td>...</td>
 		   				<td>...</td>
-		    		</tr>
-		    		
-    		
+		    		</tr>		    		   		
 		    		
 		    	</tbody>
 		    </table>
         	
-        	<%  
-          }
-                 
+        	<%
+        	if(mesAnnonces.isEmpty()){%>
+        		
+        		 <div class="alert alert-block">
+			    	<button type="button" class="close" data-dismiss="alert">X</button>
+			    	Vous n'avez pas encore d'annonces...
+			    </div>
+        		
+        	<%}
+        	else{%>
+        	
+        	    <div class="alert alert-info">
+        	    	<button type="button" class="close" data-dismiss="alert">X</button>
+			    	<strong>Info: </strong>Les annonces validees par l'administrateur sont en vert...
+   				</div>
+        	
+        		
+        	<%}
+          }                 
           %>
-          
-      
+               
             <h2>AKOYOKA!</h2>
             <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a class="btn btn-primary btn-large" href="passerAnnonce.html">Passer une annonce ! &raquo;</a></p>
         
-          </div>
-          
+          </div>        
     
           <div class="row-fluid">        	
             <div class="span4">
@@ -397,8 +365,6 @@
         </div><!--/span-->
       </div><!--/row-->
 
-
     </div><!--/.fluid-container-->
-
    
 <%@ include file="/design/footer.jspf" %>

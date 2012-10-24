@@ -13,6 +13,7 @@ import fr.spring.model.BDDModel;
 import fr.spring.objects.Annonce;
 import fr.spring.objects.Categorie;
 import fr.spring.objects.Membre;
+import fr.spring.objects.Pays;
 import fr.spring.objects.StatementMysql;
 
 @Controller
@@ -25,12 +26,14 @@ public class MonCompteController {
     	// Database test
     	BDDModel mesMembres = new BDDModel();
     	BDDModel mesAnnonces = new BDDModel();
+    	BDDModel mesPays = new BDDModel();
     	
     	Hashtable<Integer, Annonce> modelAnnonce = new Hashtable<Integer, Annonce>();
     	Hashtable<Integer, Membre> modelMembre = new Hashtable<Integer, Membre>();
+    	Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();
     	
     	Hashtable<String, Object> model = new Hashtable<String, Object>();
- 
+    	String autorisation = (String)request.getSession().getAttribute("autorisation");
 		
 		//BUild the "annonce" model from the country
 		String val= (String)request.getParameter("tab");
@@ -46,20 +49,33 @@ public class MonCompteController {
 			query = "select * from membres where Pseudo = \"" + username +"\"";
 			System.out.println("****************************"+ query);		
 			modelMembre = mesMembres.BuildModelMembre(query, StatementMysql.stat);
-		}
-		
-		else if(val.equalsIgnoreCase("annonces")){
-			query = "select * from annonces where Login_Membre =\""+ username +"\"";
-			System.out.println("****************************"+ query);
-			modelAnnonce = mesAnnonces.BuildModelAnnonce(query, StatementMysql.stat);
 			
+			//model.put("annonces", null);
+			
+		}	
+		else if(val.equalsIgnoreCase("annonces")){
+			
+			if(autorisation.equalsIgnoreCase("user"))
+				query = "select * from annonces where Login_Membre =\""+ username +"\"";
+			else
+				query = "select * from annonces where Checked = 0";
+			
+			System.out.println("****************************"+ query);			
+			modelAnnonce = mesAnnonces.BuildModelAnnonce(query, StatementMysql.stat);	
+			
+			
+			//model.put("membre", null);
 		}
 		
+		
+		
 	
+		query = "select * from pays order by Nom_Pays desc";
+		modelPays = mesPays.BuildModelPays(query, StatementMysql.stat);		
 	
-
-		model.put("annonces", modelAnnonce);
 		model.put("membre", modelMembre);
+		model.put("annonces", modelAnnonce);
+		model.put("pays",modelPays);
 	    // ******** //
 		
    	    

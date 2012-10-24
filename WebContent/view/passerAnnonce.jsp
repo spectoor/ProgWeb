@@ -29,14 +29,14 @@
           <div class="hero-unit">
           
           	<h3> Passer une annonce: </h3>
-			<form class="form-horizontal" method="get" action="finishAnnonceForm.html">
+			<form class="form-horizontal" method="post" action="finishAnnonceForm.html" enctype="multipart/form-data" >
 		
 			<fieldset>
 				<legend>Vos coordonnées</legend> <!-- Titre du fieldset -->
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" pattern="[a-z]*" name="nom" id="nom" placeholder="Nom" required/>
+						<input type="text" pattern="[A-Za-z]*" name="nom" id="nom" placeholder="Nom" required/>
 					</div>
 				</div>
 				
@@ -173,12 +173,19 @@
 						<input type="text" pattern="[0-9]*" name="prix" id="prix" placeholder="" required/>
 					</div>
 				</div>
-			
 				
+				<div class="control-group">
+					<label class="control-label" for="image">Ajouter une Image</label>
+					<div class="controls">
+						<input type="file"  name="image" id="image" value="upload"	/>
+					</div>										
+				</div>
+							
 			</fieldset>
 			
+			<hr/>
 			<span class="form_col"></span>
-						<input type="submit" value="VALIDER L'ANNONCE" />
+			<input class="btn btn-primary" type="submit" value="VALIDER L'ANNONCE" />
 			
 			
 		</form>

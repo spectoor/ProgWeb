@@ -9,7 +9,11 @@
 		modelCategories = (Hashtable<Integer, Categorie>)model.get("categories");			
 		modelAnnonces = (Hashtable<Integer, Annonce>)model.get("annonces");
 								
-		String pays = request.getParameter("country");
+		String pays = new String("");
+		pays = request.getParameter("country");
+		
+		if(pays == null)
+			pays = new String("Tous les pays:");
 		
 	%>
 
@@ -87,9 +91,10 @@
 			</caption>
 			<thead>
 				<tr>
-					<th>Date</th>
-					<th>Titre</th>
+					<th>Postée le</th>
+					<th>Titre</th>					 					
 					<th>Prix</th>
+					
 				</tr>
 			</thead>
 			
@@ -106,13 +111,13 @@
 						%>
 						<tr>
 							<td>
-								<%=date%>	
+								<%=a.getPublication()%>	
 							</td>							
 							<td>
-								<a href="annonce.html?country=<%=pays%>&title=<%=titre%>"><%=titre%> </a>							
+								<a href="annonce.html?country=<%=a.getNom_pays()%>&title=<%=a.getTitre()%>"><%=a.getTitre()%> </a>							
 							</td>						
 							<td>
-								<%=prix%>							
+								<%=a.getPrix()%>							
 							</td>							
 						</tr>					
 						<% 																	

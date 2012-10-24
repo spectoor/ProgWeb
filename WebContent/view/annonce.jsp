@@ -104,7 +104,7 @@
 		<br/><br/>
 		
 		<fieldset> 
-		<legend>CONTACTER</legend> <!-- Titre du fieldset -->			
+		<legend><i class="icon-user"></i>CONTACTER</legend> <!-- Titre du fieldset -->			
 			
 			<H5>Nom: </H5>
 			<%=a.getNom_auteur()%>
@@ -114,17 +114,16 @@
 			<%=a.getPrenom_auteur()%>
 			<br/>
 			
-			<H5>Tel: </H5>
+			<H5><i class="icon-remove"></i>Tel: </H5>
 			<%=a.getTel_auteur()%>
 			<br/>
 			
-			<H5>Email: </H5>
-			<%=a.getEmail_auteur()%>
+			<H5>Email: </H5>			
+			<a href="mailto:<%=a.getEmail_auteur()%>"><%=a.getEmail_auteur()%><i class="icon-envelope"></i></a>
 			<br/>
 	
 		</fieldset>
-		
-        
+		       
  <%}
  %>         
           <div class="row-fluid">
@@ -134,30 +133,7 @@
         </div><!--/span-->
       </div><!--/row-->
 
-      <hr>
-
-      <footer>
-        <p>&copy; ESIEA 2012 <br/> Designed by SAID OMAR Mahamoud and FAUSTHER Ulrich</p>
-      </footer>
-
     </div><!--/.fluid-container-->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
-
-  </body>
-</html>
+	
+  <%@ include file="/design/footer.jspf" %>

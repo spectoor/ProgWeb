@@ -32,18 +32,17 @@ public class FinishInscriptionController {
 	    	String prenom = request.getParameter("prenom");
 	    	String pseudo = request.getParameter("login");
 	    	String pays = request.getParameter("country");
+	    	String ville = request.getParameter("city");
 	    	String date = request.getParameter("birth");
 	    	String email = request.getParameter("email");
+	    	String tel = request.getParameter("tel");
 	    	String pwd = request.getParameter("pwd1");
+	    	String type = request.getParameter("type");	   //pro or part 		    		    	
 	    	
-	    	
-	    	
-	    	//Get the country ID
-	    	//String query1 = ""
-	    	
-	    	
-	    	String query = "insert into membres (Nom_Pays,Nom,Prenom,Pseudo,Birth,Email,Password) VALUES " +
-			"(\"" + pays +"\",\""+ nom +"\",\""+ prenom +"\",\""+ pseudo +"\",\""+ date +"\",\""+ email +"\",\""+ pwd + "\")" ;
+	    		    	    
+	    	String query = "insert into membres (Nom_Pays,Nom_Ville,Nom,Prenom,Pseudo,Birth,Email,Tel,Password,Type,Autorisation) VALUES " +
+			"(\"" + pays +"\",\""+ ville + "\",\"" + nom +"\",\""+ prenom +"\",\""+ pseudo +"\",\""+ date +"\",\""+ email +"\",\""+ tel + "\",\"" + pwd + "\",\"" +
+					type + "\", \"user\")" ;
 	    	
 	    	System.out.println(query);
 	    	

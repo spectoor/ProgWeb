@@ -32,6 +32,9 @@
 			   			</div>
 			    	</div>
 			    </form>
+			    
+			    <hr/>
+			    Vous n'avez pas encore de compte? <a href="inscription.html">Créer un compte</a>
 
           </div>
           <div class="row-fluid">

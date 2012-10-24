@@ -40,13 +40,7 @@ public class PasserAnnonceController {
 	 
 	    	// To the View
 	        return new ModelAndView("passerAnnonce", "bdd", model);
-	        
-	        
-	        
-	        
-	        
-	        
-	        
+        
 	        
 	    }
 

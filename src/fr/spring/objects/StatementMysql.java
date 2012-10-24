@@ -12,9 +12,7 @@ public class StatementMysql {
 	
 	public StatementMysql(){
 		
-		Connection c = null;
-    	Statement s = null;
-    	Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();
+		Connection c = null;    	    	
     	
     	try {
     		

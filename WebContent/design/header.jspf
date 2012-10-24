@@ -53,7 +53,9 @@
           </a>
           
           <!--  Verify if the user is connected before display the annonce form -->
-          <% String username = (String)request.getSession().getAttribute("userName"); %>
+          <% String username = (String)request.getSession().getAttribute("userName"); 
+          String autorisation = (String)request.getSession().getAttribute("autorisation");
+          %>
           
           
           <% if(username == null){
@@ -87,13 +89,22 @@
                   
             <ul class="nav">
               <li><a href="index.jsp"><i class="icon-home icon-white"></i> Home</a></li>
+              <% if(username == null){%>
               <li><a href="inscription.html"><i class="icon-pencil icon-white"></i> S'inscrire</a></li>
+              <%} 
+              %>
+              
               <li><a href="" onClick="showModal()" data-toggle="modal"><i class="icon-info-sign icon-white"></i> About Us</a></li>	           	  
-            </ul>
-            
-            
-    		
-            
+            </ul>                        
+		    
+		    <form class="" method="get" action="affichage.html">
+		    	<div class="input-append">
+		    		<input type="text" class="span2" id="search" name="search" placeholder="Recherche...">		    		<
+		    		<a class="btn btn-info" href="recherche.html">Options</a>
+		    		<button type="submit" class="btn"><i class="icon-search"></i>Search</button>
+		    	</div>		    	
+		    </form> 		    		    
+		    		    		            
             
             <!-- Modal -->
     		<div class="modal hide fade" id="myModal" tabindex="-1" >
@@ -132,17 +143,10 @@
 	    	  
 	      }
   
-	  </script>
+	  </script>                                            
             
             
             
-            
-            
-            
-            <form class="form-search">
-		      <input type="text" class="input-medium search-query" placeholder="Rechercher...">
-		      <button type="submit" class="btn" >Recherche</button>
-		    </form>
 		    
           </div><!--/.nav-collapse -->
         </div>
