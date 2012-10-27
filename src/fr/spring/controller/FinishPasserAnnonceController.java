@@ -6,10 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -49,7 +47,12 @@ public class FinishPasserAnnonceController {
 		    	
 		    	String titre = request.getParameter("titre");
 		    	String description = request.getParameter("description");		    	
-		    	int prix = 1;//Integer.parseInt(request.getParameter("prix"));
+		    	
+		    	if(request.getParameter("prix")==null)
+		    	{
+		    		System.out.println("Maniiiiiiii c'est baaaad");
+		    	}
+		    	int price = Integer.parseInt(request.getParameter("prix"));
 		    	String type = request.getParameter("type");
 		    	
 		    	String date = "";
@@ -61,7 +64,7 @@ public class FinishPasserAnnonceController {
 		    	String login  = (String)request.getSession().getAttribute("userName");
 		    			    
 		    	//getting the person type (particular or professional)
-		    	if(request.getParameter(type)=="part"){
+		    	if(request.getParameter("type").equalsIgnoreCase("part")){
 		    		pro=0;
 		    	}
 		    	else{
@@ -108,13 +111,11 @@ public class FinishPasserAnnonceController {
 		    	String query = "insert into annonces (Nom_Categorie,Nom_Pays,Nom_Ville,Login_Membre,Nom_Auteur, Prenom_Auteur," +
 		    			"Tel_Auteur,Email_Auteur,Publication,Titre,Description,Prix,Pro,Checked) VALUES " +
 				"(\"" + categorie + "\",\"" + pays + "\",\"" + ville +"\",\"" + login +"\",\""+ nom +"\",\""+ prenom +"\",\""+
-				 tel +"\",\"" + email +"\",\""+ date+"\",\"" + titre +"\",\"" + description +"\"," + prix + "," + pro + ","+ checked +")" ;
+				 tel +"\",\"" + email +"\",\""+ date+"\",\"" + titre +"\",\"" + description +"\"," + price + "," + pro + ","+ checked +")" ;
 		    	
 		    	
 		    	
-		    	//System.out.println(query);
-		    	
-				
+		    	//System.out.println(query);		    				
 				sendInscription.executeQ(query, StatementMysql.stat);				
 			    // ******** //
 

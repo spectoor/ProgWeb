@@ -13,6 +13,7 @@ import fr.spring.objects.Categorie;
 import fr.spring.objects.Contact;
 import fr.spring.objects.Membre;
 import fr.spring.objects.Pays;
+import fr.spring.objects.Ville;
 
 public class BDDModel implements IModel{
 
@@ -21,7 +22,7 @@ public class BDDModel implements IModel{
 		// TODO Auto-generated method stub
 
     	ResultSet r = null;
-    	Hashtable<Integer, Contact> model = new Hashtable<Integer, Contact>();
+    	Hashtable<Integer, Contact> model = new Hashtable<>();
     	
     	try {
     		// Execute a query	
@@ -47,7 +48,7 @@ public class BDDModel implements IModel{
 		// TODO Auto-generated method stub
 		
 		ResultSet r = null;
-    	Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();
+    	Hashtable<Integer, Pays> model = new Hashtable<>();
     	
     	try {
     		// Execute a query	
@@ -198,6 +199,34 @@ public class BDDModel implements IModel{
 		}
     	
 		
+		return model;
+		
+	}
+	
+	public Hashtable<Integer, Ville> BuildModelVille(String query, Statement state) {
+		// TODO Auto-generated method stub
+		
+		ResultSet r = null;
+		
+    	Hashtable<Integer, Ville> model = new Hashtable<Integer,Ville>();
+   	
+
+    	try {
+    		// Execute a query	
+			r = state.executeQuery(query);
+	    	
+			int i = 0;
+			// Fill Map (model)
+			while(r.next()){
+								
+				model.put(i, new Ville(r.getInt("Id_Ville"),r.getString("Nom_Ville"), r.getString("Nom_Pays")));									
+	    		i+=1;
+	    	}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    			
 		return model;
 		
 	}

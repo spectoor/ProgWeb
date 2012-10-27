@@ -15,7 +15,7 @@
     <title>ESIEA WEB PROG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="SAID OMAR MAhamoud and FAUSTHER Ulrich">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="design/css/bootstrap.css" />
@@ -69,17 +69,16 @@
             	<%
             }
           %> 
-          
-                   
+                         
           <div class="nav-collapse collapse">
                        
             <p class="navbar-text pull-right">
             <% if(username == null){
-            	%><a href="connection.html" class="navbar-link">Sign in</a>
+            	%><a href="connection.html" class="navbar-link">Se Connecter</a>
             	<%
             }
             else{
-            	%>Logged in as <a href="monCompte.html?tab=account" class="navbar-link"><%=username%></a>
+            	%>Logged in as <a href="monCompte.html?tab=account" class="navbar-link"><i class="icon-user icon-white"></i><%=username%></a>
             	<wbr/>
               	<a href="deconnect.html"><i class="icon-remove icon-white navbar-link"></i> </a>
             	<%
@@ -88,28 +87,28 @@
             </p>
                   
             <ul class="nav">
-              <li><a href="index.jsp"><i class="icon-home icon-white"></i> Home</a></li>
+              <li><a href="index.jsp"><i class="icon-home icon-white"></i> Accueil</a></li>
               <% if(username == null){%>
               <li><a href="inscription.html"><i class="icon-pencil icon-white"></i> S'inscrire</a></li>
               <%} 
               %>
               
-              <li><a href="" onClick="showModal()" data-toggle="modal"><i class="icon-info-sign icon-white"></i> About Us</a></li>	           	  
+              <li><a href="" onClick="showModal()" data-toggle="modal"><i class="icon-info-sign icon-white"></i> A Propos</a></li>	           	  
             </ul>                        
 		    
 		    <form class="" method="get" action="affichage.html">
 		    	<div class="input-append">
 		    		<input type="text" class="span2" id="search" name="search" placeholder="Recherche...">		    		<
-		    		<a class="btn btn-info" href="recherche.html">Options</a>
-		    		<button type="submit" class="btn"><i class="icon-search"></i>Search</button>
+		    		<a class="btn btn-info" href="recherche.html">Avancee</a>
+		    		<button type="submit" class="btn"><i class="icon-search"></i>Recherche</button>
 		    	</div>		    	
 		    </form> 		    		    
 		    		    		            
             
             <!-- Modal -->
-    		<div class="modal hide fade" id="myModal" tabindex="-1" >
+    		<div class="modal hide fade" id="myModal" tabindex="-1" style="display: none;" >
     			<div class="modal-header">
-    				<button type="button" class="close" data-dismiss="modal" >×</button>
+    				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
     				<h3 id="myModalLabel">A Propos</h3>
     			</div>
     		
@@ -123,11 +122,10 @@
     			</div>
     		
     			<div class="modal-footer">
-    				<button class="btn" data-dismiss="modal" >Close</button>
-    				<button class="btn btn-primary">Save changes</button>
+    				<button class="btn" OnClick="closeModal()" data-dismiss="modal" >Close</button>    				
     			</div>
-    		</div>
-		
+    		</div>    		    		    	
+ 		
  
       </div><!--/.fluid-container-->
 
@@ -140,14 +138,11 @@
 	      
 	      function showModal(){	    	  
 	    	  $('#myModal').modal('show');
-	    	  
+    	  
 	      }
   
 	  </script>                                            
-            
-            
-            
-		    
+            		    
           </div><!--/.nav-collapse -->
         </div>
       </div>

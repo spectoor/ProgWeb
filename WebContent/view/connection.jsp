@@ -15,14 +15,14 @@
 			    	<div class="control-group">
 			    		<label class="control-label" for="inputLogin">Login</label>
 			    		<div class="controls">
-			    			<input type="text" id="login" name="login" placeholder="Login" required/>
+			    			<input type="text" id="login" name="login" placeholder="Login" pattern="([a-z]|[0-9]){2,30}" required/>
 			    		</div>
 			    	</div>
 			    	
 			    	<div class="control-group">
 			    		<label class="control-label" for="inputPassword">Password</label>
 			    		<div class="controls">
-			    			<input type="password" id="pwd" name="pwd" placeholder="Password" required/>
+			    			<input type="password" id="pwd" name="pwd" placeholder="Password" pattern="([a-z]|[0-9]|é|&){2,30}"required/>
 			    		</div>
 			    	</div>
 			    	

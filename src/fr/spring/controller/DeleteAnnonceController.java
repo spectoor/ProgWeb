@@ -33,9 +33,10 @@ public class DeleteAnnonceController {
     	
     	
     	System.out.println(query);
+    	String user = (String) request.getSession().getAttribute("userName");
     	
-	
-		sendInscription.executeQ(query, StatementMysql.stat);				
+    	if( user != null )
+    		sendInscription.executeQ(query, StatementMysql.stat);				
 	    	// ******** //
 
     	// To the View

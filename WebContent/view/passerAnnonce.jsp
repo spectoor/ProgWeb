@@ -22,28 +22,27 @@
 
     <div class="container-fluid">
 		<div class="row-fluid">
-        
-		
+        	
         <div class="span9">
         
           <div class="hero-unit">
           
           	<h3> Passer une annonce: </h3>
-			<form class="form-horizontal" method="post" action="finishAnnonceForm.html" enctype="multipart/form-data" >
+			<form class="form-horizontal" method="post" action="finishAnnonceForm.html" >
 		
 			<fieldset>
 				<legend>Vos coordonnées</legend> <!-- Titre du fieldset -->
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" pattern="[A-Za-z]*" name="nom" id="nom" placeholder="Nom" required/>
+						<input type="text" pattern="[A-Za-z]{2,24}" name="nom" id="nom" placeholder="Nom" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="prenom">Prénom</label>
 					<div class="controls">
-						<input type="text" name="prenom" id="prenom" placeholder="Prénom" required/>
+						<input type="text" pattern="[A-Za-z]{2,15}" name="prenom" id="prenom" placeholder="Prénom" required/>
 					</div>
 				</div>
 				
@@ -57,7 +56,7 @@
 				<div class="control-group">
 					<label class="control-label" for="tel">Tel</label>
 					<div class="controls">
-						<input type="tel" id="tel" name="tel" placeholder="Tel">
+						<input type="tel" pattern="[0-9]*" id="tel" name="tel" placeholder="0612345678">
 					</div>
 				</div>
 				
@@ -71,12 +70,9 @@
 								// Read database
 								
 								for(Pays c:mesPays)
-								{
-									name = c.getNom();
-									int id = c.getId_pays();
-									
+								{																										
 									%>								
-										<option value="<%=name%>"><%=name%></option>
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
 									<% 
 															
 								}																	
@@ -95,10 +91,9 @@
 								// Read database
 								
 								for(Pays c:mesPays)
-								{
-									name = c.getNom();																		
+								{																											
 									%>								
-										<option value="<%=name%>"><%=name%></option>
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
 									<% 															
 								}																	
 							%>	
@@ -170,7 +165,7 @@
 				<div class="control-group">
 					<label class="control-label" for="titre">Prix</label>
 					<div class="controls">
-						<input type="text" pattern="[0-9]*" name="prix" id="prix" placeholder="" required/>
+						<input type="text" pattern="[0-9]*" name="prix" id="prix" required/>
 					</div>
 				</div>
 				

@@ -64,22 +64,12 @@
 			%>		
 			</ul>
 			</div>
-		</div>
-		
-		
-		<%
-											
-			Collection<Annonce> mesAnnonces = modelAnnonces.values();
-			
-			String date;
-			String titre;
-			int prix;
-			
-		%>
+		</div>			
 	
 		<table class="table table-hover">
 			<caption>
 			<% 
+				Collection<Annonce> mesAnnonces = modelAnnonces.values();
 				String caption = new String();
 				if(mesAnnonces.isEmpty()){
 					caption = "Pas d'annonces pour ce Pays ou cette categorie";
@@ -103,11 +93,7 @@
 					// Read database
 					
 					for(Annonce a:mesAnnonces)
-					{
-						date = a.getPublication();
-						titre = a.getTitre();
-						prix = a.getPrix();
-											
+					{																
 						%>
 						<tr>
 							<td>

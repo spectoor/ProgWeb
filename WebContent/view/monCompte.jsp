@@ -181,7 +181,12 @@
             <ul class="nav nav-list">
               <li class="nav-header">MON COMPTE</li>
               <li><a href="monCompte.html?tab=account">Parametres du compte</a></li>
-              <li><a href="monCompte.html?tab=annonces">Mes annonces</a></li>                        
+              <%if(autorisation.equalsIgnoreCase("admin")){ %>
+              <li><a href="monCompte.html?tab=annonces">Annonces à valider</a></li>
+              <%}
+              else{%>
+              <li><a href="monCompte.html?tab=annonces">Mes annonces</a></li>
+              <%}%>                       
 				    
             </ul>
           </div><!--/.well -->
@@ -329,7 +334,7 @@
 		    </table>
         	
         	<%
-        	if(mesAnnonces.isEmpty()){%>
+        	if(mesAnnonces.isEmpty() && autorisation.equalsIgnoreCase("user")){%>
         		
         		 <div class="alert alert-block">
 			    	<button type="button" class="close" data-dismiss="alert">X</button>
@@ -337,7 +342,7 @@
 			    </div>
         		
         	<%}
-        	else{%>
+        	else if(mesAnnonces.isEmpty()==false && autorisation.equalsIgnoreCase("user")){%>
         	
         	    <div class="alert alert-info">
         	    	<button type="button" class="close" data-dismiss="alert">X</button>

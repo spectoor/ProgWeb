@@ -15,18 +15,46 @@
 	
 	Collection<Pays> mesPays = modelPays.values();
 	Collection<Membre> mesMembres = modelMembres.values();
-
 	
 	String name;
 	
+	
   %>
+  
   
   	<script type="text/javascript"> 
  		
 	      function checkLogin(){
-	    	  //check if the login is not already used 
-	    	  alert("OK");
-	    	  
+	    	//check if the login is not already used 
+	    	//oForm.elements["name"].value;	    	 	    	  	    	  	    	    	 
+	    	/*var i = 1;
+	    	var result = 'blez';*/
+	    	var l= 	$('#login').attr("value");
+	    	
+	    	
+	    	<%	    	
+	    	for(Membre m: mesMembres){
+	    		
+	    		%> $log = <%=m.getPseudo()%>
+	    		
+	    		if($log == l){
+	    			
+	    		}
+	    		
+	    	<%}
+	    	%>
+	    	
+	    	
+	    	
+	    	
+	    	alert(l);
+	    	//if(i==2){
+			//alert(result); // Affiche : « string »
+	    	//}
+	    	
+	    	//var userName = prompt('Entrez votre prénom :');
+	    	//alert(userName); // Affiche le prénom entré par l'utilisateur
+  	  
 	      }
 	      
 	      
@@ -88,7 +116,7 @@
 						<input type="text" name="login" id="login" placeholder="login" onchange="checkLogin()" pattern="[A-Za-z0-9]{3,24}" required/>
 					</div>
 				</div>
-				
+					
 				<div class="control-group">
 					<label class="control-label" for="pwd1">Mot de passe</label>
 					<div class="controls">

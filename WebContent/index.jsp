@@ -14,8 +14,7 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header"><i class="icon-globe"></i>LISTE DES PAYS</li>
-              <li class="active"><a href="#">Link</a></li>                        
+              <li class="nav-header"><i class="icon-globe"></i>LISTE DES PAYS <hr/></li>                                      
 				<%	
 					//Read database					
 					for(Pays c:mesPaysC)

@@ -48,7 +48,7 @@ public class FinishModifAccountController {
     	    	
     	//UPDATE membres SET Nom = 'Saids', Prenom="Jowel" WHERE Pseudo="";
     	String query = "update membres set Nom = \"" + nom + "\" , Prenom = \"" + prenom + "\", Nom_Pays = \"" + pays + "\" , Nom_Ville = \"" + ville + "\"" +
-    			", Email= \"" + email + "\" ,Tel = \"" + tel + "\" Password = \"" + pwd + "\" Where Pseudo = \"" + loginSession + "\" " ;
+    			", Email= \"" + email + "\" ,Tel = \"" + tel + "\" , Password = \"" + pwd + "\" Where Pseudo = \"" + loginSession + "\" " ;
     	
     	
     	if(pwd.equalsIgnoreCase("")){

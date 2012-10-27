@@ -35,8 +35,12 @@ public class ValidateAnnonceController {
 	    	String query = "update annonces set Checked = 1 where Id_Annonce=" + idAnnnonce;
 	    		    	
 	    	System.out.println(query);
-	    			
-			sendInscription.executeQ(query, StatementMysql.stat);				
+	    		
+	    	String auth = (String) request.getSession().getAttribute("autorisation");
+	    	
+	    	// check the session permission before validate the annonce
+	    	if(auth.equalsIgnoreCase("admin"))
+	    		sendInscription.executeQ(query, StatementMysql.stat);				
 		    	// ******** //
 
 	    	// To the View
