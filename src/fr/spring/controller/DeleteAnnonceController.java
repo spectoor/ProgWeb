@@ -29,8 +29,7 @@ public class DeleteAnnonceController {
     	String id = request.getParameter("id");
     	int idAnnnonce = Integer.parseInt(id);
     	
-    	String query = "delete from annonces where Id_Annonce=" + idAnnnonce; 
-    	
+    	String query = "delete from annonces where Id_Annonce=" + idAnnnonce;    	
     	
     	System.out.println(query);
     	String user = (String) request.getSession().getAttribute("userName");

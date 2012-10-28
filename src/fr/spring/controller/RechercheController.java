@@ -30,10 +30,10 @@ public class RechercheController {
     	
 		mesPays = new BDDModel();
 		mesCategories = new BDDModel();
-		String query = "select Id_Pays, Nom_Pays from pays order by Nom_Pays desc";
+		String query = "select * from pays order by Nom_Pays desc";
 		modelPays = mesPays.BuildModelPays(query, StatementMysql.stat);	
 		
-		query = "select Id_Categorie, Nom_Categorie from categories";
+		query = "select * from categories";
 		modelCategorie = mesCategories.BuildModelCategorie(query, StatementMysql.stat);
 		
 		model.put("pays", modelPays);

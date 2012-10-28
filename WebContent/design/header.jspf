@@ -11,16 +11,16 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <title>ESIEA WEB PROG</title>
+    <title>AWANA W'AFRICA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="SAID OMAR MAhamoud and FAUSTHER Ulrich">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <!-- Le styles -->
+    <!-- Le styles -->    
     <link rel="stylesheet" href="design/css/bootstrap.css" />
     <link rel="stylesheet" href="design/css/bootstrap-responsive.css" >
-    
+    <link rel="stylesheet" href="design/css/jquery.alerts.css" />
        
     <style type="text/css">
       body {
@@ -98,7 +98,7 @@
 		    
 		    <form class="" method="get" action="affichage.html">
 		    	<div class="input-append">
-		    		<input type="text" class="span2" id="search" name="search" placeholder="Recherche...">		    		<
+		    		<input type="text" class="span2" id="search" name="search" placeholder="Recherche...">
 		    		<a class="btn btn-info" href="recherche.html">Avancee</a>
 		    		<button type="submit" class="btn"><i class="icon-search"></i>Recherche</button>
 		    	</div>		    	
@@ -106,18 +106,40 @@
 		    		    		            
             
             <!-- Modal -->
-    		<div class="modal hide fade" id="myModal" tabindex="-1" style="display: none;" >
+    		<div class="modal hide fade in" id="myModal" tabindex="-1" style="display: none;" >
     			<div class="modal-header">
     				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
     				<h3 id="myModalLabel">A Propos</h3>
     			</div>
     		
     			<div class="modal-body">
-    				<h2>AKOYOKA!</h2>
+    				<h2>AWANA W'AFRICA!</h2>
             		<p>
-            			This is a template for a simple marketing or informational website. It includes a large callout 
-            			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
-            			something more unique.
+            			::: Projet de programmation Web ::: <br/>
+
+						::: Par Ulrich FAUSTHER & Mahamoud SAID OMAR ::: <br/> <br/>
+						
+						::: AWANNA W'AFRICA ::: <br/>
+						
+						Notre application Web est une plateforme Web communautaire de troc dédié aux pays africains. <br/> <br/>
+						
+						::: Résumé ::: <br/>
+						
+						Elle permet de poster une annonce en tant qu'utilisateur authentifié, de gérer son compte et ses annonces. <br/> <br/>
+						
+						::: Fonctionalités ::: <br/>
+						
+						L'interface propose un affichage par pays des annonces publiées par l'ensemble des utilisateurs. <br/>
+						Un visiteur peut ainsi visionner les annonces validées par l'administrateur du site. <br/>
+						Chaque utilisateur authentifié peut modifier à souhait ces annonces ou encore les supprimmer. <br/>
+						
+						Chaque annonce possède une liste d'informations détaillées sur l'objet ou service proposé et sur la personnes à contacter.
+						<br/>
+						Des modules de recherche avancées ont été implémentés. <br/>
+						
+						Un compte d'administration est mise en place pour gérer le contenu du site. <br/>
+						L'administrateur se réserve alors le droit de valider ou non les annonces postées. <br/> <br/>
+												
             		</p>
     			</div>
     		
@@ -146,7 +168,7 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>  
+     
       
       
   

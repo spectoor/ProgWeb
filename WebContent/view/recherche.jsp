@@ -6,16 +6,12 @@
 	Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();
 	Hashtable<Integer, Categorie> modelCategories = new Hashtable<Integer, Categorie>();
 	
-	model = (Hashtable<String, Object>)request.getAttribute("bdd");
-	
+	model = (Hashtable<String, Object>)request.getAttribute("bdd");	
 	modelPays = (Hashtable<Integer, Pays>)model.get("pays");
-	
 	modelCategories = (Hashtable<Integer, Categorie>)model.get("categories");
 	
 	Collection<Pays> mesPays = modelPays.values();
-	Collection<Categorie> mesCategories = modelCategories.values();
-							
-	
+	Collection<Categorie> mesCategories = modelCategories.values();							
 	
 	String name;
 	
@@ -36,7 +32,7 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Rechercher:</label>
 					<div class="controls">
-						<input type="text" name="search" id="search" placeholder="search" pattern="[A-Za-z]*" required>
+						<input type="text" name="search" maxlength="30" id="search" placeholder="search" pattern="[A-Za-z]*" required>
 					</div>
 				</div>			
 			</fieldset>
@@ -137,7 +133,7 @@
 						</label>
 					</div>
 					<div class="controls">
-						<input type="text" name="prix" id="prix" placeholder="" pattern="[0-9]*">
+						<input type="text" name="prix" id="prix" maxlength="10" placeholder="" pattern="[0-9]*">
 					</div>
 				</div>			
 			</fieldset>

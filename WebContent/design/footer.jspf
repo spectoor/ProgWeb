@@ -10,14 +10,14 @@
   </footer>
 
     <!-- Modal -->
-		<div class="modal hide fade" id="modalInfos" tabindex="-1">
+		<div class="modal hide fade in" id="modalInfos" tabindex="-1">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
 				<h3 id="myModalLabel">Informations legales</h3>
 			</div>
 		
 			<div class="modal-body">
-				<h2>AKOYOKA!</h2>
+				<h2>AWANA W'AFRICA!</h2>
         		<p>
         			This is a template for a simple marketing or informational website. It includes a large callout 
         			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
@@ -84,14 +84,14 @@
 	  
 	  
 	  <!-- Modal -->
-		<div class="modal hide fade" id="modalQui" tabindex="-1">
+		<div class="modal hide fade in" id="modalQui" tabindex="-1">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
 				<h3 id="myModalLabel">Qui sommes-nous</h3>
 			</div>
 		
 			<div class="modal-body">
-				<h2>AKOYOKA!</h2>
+				<h2>AWANA W'AFRICA!</h2>
         		<p>
         			This is a template for a simple marketing or informational website. It includes a large callout 
         			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
@@ -151,10 +151,10 @@
 			</div>
 		
 			<div class="modal-body">
-				<h2>AKOYOKA!</h2>
+				<h2>AWANA W'AFRICA!</h2>
 				<h4>Adresse:</h4>
 				<address>
-					4 ruelle du four <br/> 
+					15 avenue General Dblezo <br/> 
 					53000 Laval France	
 				
 				</address>
@@ -191,6 +191,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="design/js/jquery-1.8.2.js"></script>
+    <script src="design/js/jquery.alert.js"></script>
     <script src="design/js/bootstrap.js"></script>
     <script src="design/js/bootstrap-modal.js"></script>
     

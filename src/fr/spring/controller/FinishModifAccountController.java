@@ -18,10 +18,8 @@ import fr.spring.objects.StatementMysql;
 @Controller
 @RequestMapping("/finishModifAccount")
 public class FinishModifAccountController {
-	
-	
-	// View URL definition
-	
+		
+	// View URL definition	
 	@RequestMapping(method=RequestMethod.POST)
     public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) {
  
@@ -38,7 +36,7 @@ public class FinishModifAccountController {
     	String pays = request.getParameter("country");
     	String ville = request.getParameter("city");
     	String email = request.getParameter("email");
-    	String tel = request.getParameter("tel");
+    	String tel = request.getParameter("tel");    	
     	String pwd = request.getParameter("pwd2");
     	String loginSession = (String)request.getSession().getAttribute("userName");
     	
@@ -57,13 +55,9 @@ public class FinishModifAccountController {
         	
     	}
     	
-    	sendInscription.executeQ(query, StatementMysql.stat);    	    	
-    	
-    	
     	System.out.println(query);
-    	
-	
-						
+    	sendInscription.executeQ(query, StatementMysql.stat);    	    		 
+
 	    	// ******** //
 
     	// To the View

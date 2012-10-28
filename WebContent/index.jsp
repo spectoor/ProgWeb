@@ -4,11 +4,10 @@
   <%
 		BDDModel mesPays = new BDDModel();
 		Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();				
-		model = mesPays.BuildModelPays("select Id_Pays, Nom_Pays from pays order by Nom_Pays desc", StatementMysql.stat);						
+		model = mesPays.BuildModelPays("select * from pays order by Nom_Pays desc", StatementMysql.stat);						
 		Collection<Pays> mesPaysC = model.values();	
 		String name;		
-  %>	
-    
+  %>	   
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
@@ -30,11 +29,17 @@
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit">
-            <h2>AKOYOKA!</h2>           
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called
-             the hero unit and three supporting pieces of content. Use it as a starting point to create something more
-              unique.
-              </p>
+            <h2>AWANA W'AFRICA!</h2>           
+            <p>
+            AWANA W'AFRICA (les enfants d'Afrique) est une plateforme Web communautaire de troc dédiée aux pays africains. <br/>												
+			Elle permet de poster une annonce en tant qu'utilisateur authentifié, de gérer son compte et ses annonces. <br/>
+			Pour chercher une annonce, cliquez sur le pays de votre choix. <br/>
+			Ou
+			
+			
+			
+			
+            </p>
             <p><a class="btn btn-primary btn-large" href="passerAnnonce.html">Passer une annonce ! &raquo;</a></p>
         
           </div>

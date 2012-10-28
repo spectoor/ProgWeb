@@ -10,9 +10,7 @@
 		<h1>Redirection</h1>
 		<script type="text/javascript">
 			window.location.href="monCompte.html?tab=annonces";
-		</script>
-		
-		
+		</script>				
 				
 	</BODY>
 </HTML> 

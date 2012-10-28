@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.spring.model.BDDModel;
 import fr.spring.objects.Annonce;
 import fr.spring.objects.Categorie;
+import fr.spring.objects.Pays;
 import fr.spring.objects.StatementMysql;
 
 @Controller
@@ -24,11 +25,14 @@ public class AffichageController {
     	// Database test
     	BDDModel mesCategorie = new BDDModel();
     	BDDModel mesAnnonces = new BDDModel();
+    	BDDModel mesPays = new BDDModel();
     	
     	Hashtable<Integer, Annonce> modelAnnonce = new Hashtable<Integer, Annonce>();
     	Hashtable<Integer, Categorie> modelCategorie = new Hashtable<Integer, Categorie>();
+    	Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();
     	
     	Hashtable<String, Object> model = new Hashtable<String, Object>();
+    	
     	String pays= request.getParameter("country");
 		String cat= request.getParameter("cat");
 		String search = request.getParameter("search");				
@@ -38,34 +42,14 @@ public class AffichageController {
 	    // Modeling
 		modelCategorie = mesCategorie.BuildModelCategorie("select * from categories", StatementMysql.stat);
 		
-		//BUild the "annonce" model from the country						
+		modelPays = mesPays.BuildModelPays("select * from pays", StatementMysql.stat);
 		
+		//BUild the "annonce" model from the country						
 		String query = "select * from annonces where Nom_Pays = \"" + pays +"\" && Checked = 1";
 		
 		if(cat != null ){
 			query = "select * from annonces where Nom_Pays = \"" + pays + "\" && Nom_Categorie = \"" + cat + "\" && Checked = 1";
 		}
-		
-		
-		/*
-		if(search != null){
-			query = "select * from annonces where  Checked = 1 && (Titre like  \"%" + search + "%\" || Description like \"%" + search + "%\" )";
-			
-			//searching by country
-			if(pays.equalsIgnoreCase("none")==false){
-				query ="select * from annonces where Checked = 1 && Nom_Pays= \"" + pays + "\" && (Titre like  \"%" + search + "%\" || Description like \"%" + search + "%\")";
-			}
-			
-			if(cat.equalsIgnoreCase("none")==false){
-				query ="select * from annonces where Checked = 1 && Nom_Categorie= \"" + cat + "\" && (Titre like  \"%" + search + "%\" || Description like \"%" + search + "%\")";
-				if(pays.equalsIgnoreCase("none")==false){
-					query ="select * from annonces where Checked = 1 && Nom_Categorie = \"" + cat + "\" && Nom_Pays= \"" + pays + "\" && (Titre like  \"%" + search + "%\" || Description like \"%" + search + "%\")";
-				}
-			}
-			
-			
-		}
-		*/
 		
 		
 		//research mode
@@ -113,6 +97,7 @@ public class AffichageController {
 		
 		model.put("categories", modelCategorie);
 		model.put("annonces", modelAnnonce);
+		model.put("pays",modelPays);
 	    // ******** //
 		   	    
     	// To the View

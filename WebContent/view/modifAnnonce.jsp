@@ -39,28 +39,28 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" pattern="[A-Za-z]*" name="nom" id="nom" value="<%=aModif.getNom_auteur()%>" required/>
+						<input type="text" pattern="[A-Za-z]{2,24}" maxlength="30" name="nom" id="nom" value="<%=aModif.getNom_auteur()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="prenom">Prénom</label>
 					<div class="controls">
-						<input type="text" name="prenom" id="prenom" value="<%=aModif.getPrenom_auteur()%>" required/>
+						<input type="text" pattern="[A-Za-z]{2,30}" maxlength="30" name="prenom" id="prenom" value="<%=aModif.getPrenom_auteur()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Email</label>
 					<div class="controls">
-						<input type="email" id="email" name="email" value="<%=aModif.getEmail_auteur()%>" required/>
+						<input type="email" id="email" name="email" maxlength="50" value="<%=aModif.getEmail_auteur()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="tel">Tel</label>
 					<div class="controls">
-						<input type="tel" id="tel" name="tel" value="<%=aModif.getTel_auteur()%>">
+						<input type="tel" pattern="[0-9]{2,24}" maxlength="30" id="tel" name="tel" value="<%=aModif.getTel_auteur()%>">
 					</div>
 				</div>
 												
@@ -74,14 +74,14 @@
 				<div class="control-group">
 					<label class="control-label" for="titre">Titre de l'annonce</label>
 					<div class="controls">
-						<input type="text" name="titre" id="titre" value="<%=aModif.getTitre()%>" required/>
+						<input type="text" pattern="[A-Za-z]{1,100}" maxlength="100" name="titre" id="titre" value="<%=aModif.getTitre()%>" required/>
 					</div>
 				</div>
 							
 				<div class="control-group">
 					<label class="control-label" for="description"> Description de l'annonce</label>
 					<div class="controls">						
-						<textarea name="description" id="description" ><%=aModif.getDescription()%></textarea>
+						<textarea name="description" id="description" maxlength="500" ><%=aModif.getDescription()%></textarea>
 					</div>
 				</div>
 				
@@ -89,17 +89,10 @@
 				<div class="control-group">
 					<label class="control-label" for="titre">Prix</label>
 					<div class="controls">
-						<input type="text" pattern="[0-9]*" name="prix" id="prix" value="<%=aModif.getPrix()%>" required/>
+						<input type="text" pattern="[0-9]*" maxlength="10" name="prix" id="prix" value="<%=aModif.getPrix()%>" required/>
 					</div>
 				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="image">Ajouter une Image</label>
-					<div class="controls">
-						<input type="file"  name="prix" id="image"	onchange="handleFiles(this.files)"/>
-					</div>
-				</div>
-				
+											
 				<input type="hidden" name="idAnnonce" id="idAnnonce" value="<%=aModif.getId_annonce()%>"/>
 			
 				

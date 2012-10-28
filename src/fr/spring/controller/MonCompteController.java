@@ -1,17 +1,13 @@
 package fr.spring.controller;
 
 import java.util.Hashtable;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import fr.spring.model.BDDModel;
 import fr.spring.objects.Annonce;
-import fr.spring.objects.Categorie;
 import fr.spring.objects.Membre;
 import fr.spring.objects.Pays;
 import fr.spring.objects.StatementMysql;
@@ -62,9 +58,7 @@ public class MonCompteController {
 			
 			System.out.println("****************************"+ query);			
 			modelAnnonce = mesAnnonces.BuildModelAnnonce(query, StatementMysql.stat);	
-			
-			
-			//model.put("membre", null);
+						
 		}
 		
 		

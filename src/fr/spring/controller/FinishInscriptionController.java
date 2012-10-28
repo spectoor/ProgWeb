@@ -45,10 +45,7 @@ public class FinishInscriptionController {
 					type + "\", \"user\")" ;
 	    	
 	    	System.out.println(query);
-	    	
-			//insert into membre ("Id_Membre","Id_Pays" , "Nom" , "Prenom" , "Pseudo" , "Birth" , "Email" , "Password" )
-	    	//VALUES ("", "", "" , "" , "", "", "");
-	    	
+	    		
 			sendInscription.executeQ(query, StatementMysql.stat);				
 		    	// ******** //
 

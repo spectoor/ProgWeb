@@ -8,9 +8,7 @@
 	Hashtable<Integer, Membre> modelMembres = new Hashtable<Integer, Membre>();
 	
 	model = (Hashtable<String, Object>)request.getAttribute("bdd");
-	
 	modelPays = (Hashtable<Integer, Pays>)model.get("pays");
-	
 	modelMembres = (Hashtable<Integer, Membre>)model.get("membres");
 	
 	Collection<Pays> mesPays = modelPays.values();
@@ -18,6 +16,7 @@
 	
 	String name;
 	
+	boolean used = false;	
 	
   %>
   
@@ -26,39 +25,31 @@
  		
 	      function checkLogin(){
 	    	//check if the login is not already used 
-	    	//oForm.elements["name"].value;	    	 	    	  	    	  	    	    	 
-	    	/*var i = 1;
-	    	var result = 'blez';*/
-	    	var l= 	$('#login').attr("value");
 	    	
-	    	
-	    	<%	    	
+	    	var l= 	$('#login').attr("value");	 
+	    	var ok = 1;
+	    	$("#alertLogin").alert();
+	    	<% 
 	    	for(Membre m: mesMembres){
-	    		
-	    		%> $log = <%=m.getPseudo()%>
-	    		
-	    		if($log == l){
-	    			
+	    		String log = m.getPseudo();%>
+	    			    		
+	    		var loginTest ='<%=log%>';
+	    		if(loginTest == l){	    		    			
+	    			$('#login').attr("value","");	    			
+	    			$("#alertLogin").attr("style","display:yes;");
+	    			ok = 0;	    			
 	    		}
 	    		
-	    	<%}
-	    	%>
+	    		
+	    	<%}%>
 	    	
-	    	
-	    	
-	    	
-	    	alert(l);
-	    	//if(i==2){
-			//alert(result); // Affiche : « string »
-	    	//}
-	    	
-	    	//var userName = prompt('Entrez votre prénom :');
-	    	//alert(userName); // Affiche le prénom entré par l'utilisateur
+	    	//si le login est valide
+	    	if(ok==1){	    		
+	    		$("#alertLogin").attr("style","display:none;");
+	    	}	    	
   	  
 	      }
-	      
-	      
-  
+	      	        
 	  </script>
   
     <div class="container-fluid">
@@ -78,56 +69,61 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" name="nom" id="nom" placeholder="Nom" pattern="[A-Za-z]*" required/>
+						<input type="text" name="nom" id="nom" placeholder="Nom" maxlength="30" pattern="[A-Za-z]*" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="prenom">Prénom</label>
 					<div class="controls">
-						<input type="text" name="prenom" id="prenom" placeholder="Prénom" pattern="[A-Za-z]*" required/>
+						<input type="text" name="prenom" id="prenom" placeholder="Prénom" maxlength="30" pattern="[A-Za-z]*" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="birth">Date de naissance (Ex:YYYY/MM/DD)</label>
 					<div class="controls">
-						<input type="date" name="birth" id="birth" placeholder="Ex: YYYY/MM/DD"  pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required/>
+						<input type="date" name="birth" id="birth"  maxlength="11" placeholder="Ex: YYYY/MM/DD"  pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Email</label>
 					<div class="controls">
-						<input type="email" id="email" name="email" placeholder="Ex:membre@faust.fr" pattern="[A-Za-z0-9]*@[a-z]*.[a-z]{2,3}" required/>
+						<input type="email" id="email" name="email" placeholder="Ex:membre@faust.fr" maxlength="50" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="inputTel">Tel</label>
+					<label class="control-label" for="inputtelf">Tel</label>
 					<div class="controls">
-						<input type="tel" id="tel" name="tel" placeholder="Tel:06 24 17 22" pattern="[0-9]*"/>
+						<input type="text" id="tel" name="tel" placeholder="Ex:06241722" maxlength="20" pattern="[0-9]{2,20}" required/>
 					</div>
-				</div>
-				
+				</div>															
+		
 				<div class="control-group">
 					<label class="control-label" for="login">Pseudo</label>
 					<div class="controls">
-						<input type="text" name="login" id="login" placeholder="login" onchange="checkLogin()" pattern="[A-Za-z0-9]{3,24}" required/>
+						<input type="text" name="login" id="login" placeholder="login" onchange="checkLogin()" maxlength="30" pattern="[A-Za-z0-9]{3,30}" required/>
 					</div>
-				</div>
+					
+					<div id="alertLogin"  class="alert alert-block" style="display:none;">				    	
+				    	Pseudo déja utilisé ! Veuillez choisir un autre.
+				    </div>
+				    
+				</div>								
 					
 				<div class="control-group">
 					<label class="control-label" for="pwd1">Mot de passe</label>
 					<div class="controls">
-						<input type="password" name="pwd1" id="pwd1" pattern="[A-Za-z0-9]{5,12}" onchange="form.pwd2.pattern = this.value;" required/>
+						<input type="password" name="pwd1" id="pwd1" maxlength="30" pattern="[A-Za-z0-9]{5,30}" onchange="form.pwd2.pattern = this.value;" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="pwd2">Mot de passe (confirmation)</label>
 					<div class="controls">
-						<input type="password" name="pwd2" id="pwd2" title="" required/>
+						<input type="password"  maxlength="30" name="pwd2" id="pwd2" title="" required/>
 					</div>
 				</div>
 				
@@ -137,16 +133,13 @@
 					<div class="controls">
 						<select name="country" id="country">
 							<option value="none" >Selectionnez votre pays de residence</option>
+							
 							<%	
-								// Read database
-								
+								// Read database								
 								for(Pays c:mesPays)
-								{
-									name = c.getNom();
-									
-																		
+								{															
 									%>								
-										<option value="<%=name%>"><%=name%></option>
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
 									<% 
 															
 								}																	
@@ -165,10 +158,9 @@
 								// Read database								
 								for(Pays c:mesPays)
 								{
-									name = c.getNom();
-																											
+																						
 									%>								
-										<option value="<%=name%>"><%=name%></option>
+										<option value="<%=c.getNom()%>"><%=c.getNom()%></option>
 									<% 
 															
 								}																	
@@ -197,9 +189,9 @@
 			</fieldset>
 
 			<span class="form_col"></span>
-						<input type="submit" value="S'INSCRIRE" />
+						<input class="btn btn-primary" type="submit" value="S'INSCRIRE" />
 			<span class="form_col"></span>
-						<input type="reset" value="RESET" />
+						<input class="btn" type="reset" value="RESET" />
 			
 			
 		</form>

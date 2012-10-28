@@ -7,12 +7,9 @@
 		Hashtable<Integer, Annonce> modelAnnonce = new Hashtable<Integer, Annonce>();
 		Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();;
 		
-		model = (Hashtable<String, Object>)request.getAttribute("bdd");
-		
-		modelMembre = (Hashtable<Integer, Membre>)model.get("membre");
-		
-		modelAnnonce = (Hashtable<Integer, Annonce>)model.get("annonces");
-		
+		model = (Hashtable<String, Object>)request.getAttribute("bdd");		
+		modelMembre = (Hashtable<Integer, Membre>)model.get("membre");		
+		modelAnnonce = (Hashtable<Integer, Annonce>)model.get("annonces");		
 		modelPays = (Hashtable<Integer, Pays>)model.get("pays");
 		
 	
@@ -70,42 +67,42 @@
 				<div class="control-group">
 					<label class="control-label" for="nom">Nom</label>
 					<div class="controls">
-						<input type="text" name="nom" id="nom" value="<%=profil.getNom()%>" required/>
+						<input type="text" maxlength="30" pattern="[A-Za-z]*" name="nom" id="nom" value="<%=profil.getNom()%>" required/>
 					</div>
 				</div>
 			
 				<div class="control-group">
 					<label class="control-label" for="prenom">Prenom</label>
 					<div class="controls">
-						<input type="text" name="prenom" id="prenom" value="<%=profil.getPrenom()%>" required/>
+						<input type="text" maxlength="30" pattern="[A-Za-z]*" name="prenom" id="prenom" value="<%=profil.getPrenom()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Email</label>
 					<div class="controls">
-						<input type="email" id="email" name="email" value="<%=profil.getEmail()%>" required/>
+						<input type="email"maxlength="30" id="email" name="email" value="<%=profil.getEmail()%>" required/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="inputTel">Tel</label>
 					<div class="controls">
-						<input type="tel" id="tel" name="tel" value="<%=profil.getTel()%>" required/>
+						<input type="tel" maxlength="16" pattern="[0-9]*" id="tel" name="tel" value="<%=profil.getTel()%>" required/>
 					</div>
 				</div>
 			
 				<div class="control-group">
 					<label class="control-label" for="pwd1">Ancien Mot de passe</label>
 					<div class="controls">
-						<input type="password" name="pwd1" id="pwd1" placeholder="**********" />
-					</div>
+						<input type="password" maxlength="30" pattern="[A-Za-z0-9]*" name="pwd1" id="pwd1" placeholder="**********" />
+					</div>										
 				</div>
 				
 				<div class="control-group">
 					<label class="control-label" for="pwd2">Nouveau Mot de passe</label>
 					<div class="controls">
-						<input type="password" name="pwd2" id="pwd2" placeholder="**********" />
+						<input type="password" maxlength="30" pattern="[A-Za-z0-9]*" name="pwd2" id="pwd2" placeholder="**********" />
 					</div>
 				</div>
 			
@@ -145,9 +142,7 @@
 							%>									
 						</select>
 					</div>
-				</div>
-				
-				
+				</div>								
 			
 			</fieldset>
 			
@@ -170,10 +165,6 @@
 </div>
 
 
-  
-  
-	
-
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
@@ -182,7 +173,7 @@
               <li class="nav-header">MON COMPTE</li>
               <li><a href="monCompte.html?tab=account">Parametres du compte</a></li>
               <%if(autorisation.equalsIgnoreCase("admin")){ %>
-              <li><a href="monCompte.html?tab=annonces">Annonces à valider</a></li>
+              <li><a href="monCompte.html?tab=annonces"> Annonces a valider</a></li>
               <%}
               else{%>
               <li><a href="monCompte.html?tab=annonces">Mes annonces</a></li>
@@ -302,8 +293,7 @@
 		   					<%}%>
 		   					<%if(autorisation.equalsIgnoreCase("admin")){%>   						
 		   					<td><a href="validateAnnonce.html?id=<%=a.getId_annonce()%>"  ><i class="icon-ok"></i> </a></td>	   				
-		   					<%}%>
-		   					
+		   					<%}%>		   					
 		   					
 		   					<td><a href="deleteAnnonce.html?id=<%=a.getId_annonce()%>"><i class="icon-trash"></i> </a></td>		   							   					
 		    				
@@ -354,8 +344,13 @@
           }                 
           %>
                
-            <h2>AKOYOKA!</h2>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <h2>AWANA W'AFRICA!</h2>
+            <p>
+            AWANA W'AFRICA (les enfants d'Afrique) est une plateforme Web communautaire de troc dediee aux pays africains. <br/>												
+			Elle permet de poster une annonce en tant qu'utilisateur authentifie, de gerer son compte et ses annonces. <br/>
+			Pour chercher une annonce, cliquez sur le pays de votre choix. <br/>
+			Ou           
+			</p>
             <p><a class="btn btn-primary btn-large" href="passerAnnonce.html">Passer une annonce ! &raquo;</a></p>
         
           </div>        

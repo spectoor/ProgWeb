@@ -4,11 +4,15 @@
 		Hashtable<String, Object> model = new Hashtable<String, Object>();			
 		Hashtable<Integer, Categorie> modelCategories = new Hashtable<Integer, Categorie>();
 		Hashtable<Integer, Annonce> modelAnnonces = new Hashtable<Integer, Annonce>();
+		Hashtable<Integer, Pays> modelPays = new Hashtable<Integer, Pays>();
 		
 		model = (Hashtable<String, Object>)request.getAttribute("bdd");		
-		modelCategories = (Hashtable<Integer, Categorie>)model.get("categories");			
+		modelCategories = (Hashtable<Integer, Categorie>)model.get("categories");		
 		modelAnnonces = (Hashtable<Integer, Annonce>)model.get("annonces");
+		modelPays = (Hashtable<Integer, Pays>)model.get("pays");
 								
+		Collection<Pays> mesPays = modelPays.values();
+		
 		String pays = new String("");
 		pays = request.getParameter("country");
 		
@@ -93,7 +97,15 @@
 					// Read database
 					
 					for(Annonce a:mesAnnonces)
-					{																
+					{
+						//get the country device for this annonce
+						String devise = new String();
+						for(Pays p:mesPays){
+							if(a.getNom_pays().equalsIgnoreCase(p.getNom()) ){
+								
+								devise = p.getDevise();
+							}
+						}
 						%>
 						<tr>
 							<td>
@@ -103,7 +115,7 @@
 								<a href="annonce.html?country=<%=a.getNom_pays()%>&title=<%=a.getTitre()%>"><%=a.getTitre()%> </a>							
 							</td>						
 							<td>
-								<%=a.getPrix()%>							
+								<%=a.getPrix()%> <wbr/> <%=devise%>							
 							</td>							
 						</tr>					
 						<% 																	

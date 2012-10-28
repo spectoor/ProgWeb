@@ -3,13 +3,27 @@ package fr.spring.objects;
 public class Pays {
 	private int id_pays;
 	private String nom;
+	private String devise;
 	
 	
-	public Pays(int id_pays, String nom) {
+	public Pays(int id_pays, String nom, String devise) {
 		super();
 		this.id_pays = id_pays;
 		this.nom = nom;
+		this.devise = devise;
 	}
+
+	
+
+	public String getDevise() {
+		return devise;
+	}
+
+	public void setDevise(String devise) {
+		this.devise = devise;
+	}
+
+
 
 
 	public int getId_pays() {

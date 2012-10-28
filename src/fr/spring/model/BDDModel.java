@@ -5,12 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Hashtable;
-
-import com.mysql.jdbc.Connection;
-
 import fr.spring.objects.Annonce;
 import fr.spring.objects.Categorie;
-import fr.spring.objects.Contact;
 import fr.spring.objects.Membre;
 import fr.spring.objects.Pays;
 import fr.spring.objects.Ville;
@@ -18,37 +14,11 @@ import fr.spring.objects.Ville;
 public class BDDModel implements IModel{
 
 	@Override
-	public Hashtable<Integer, Contact> BuildModel(String query, Statement state) {
-		// TODO Auto-generated method stub
-
-    	ResultSet r = null;
-    	Hashtable<Integer, Contact> model = new Hashtable<>();
-    	
-    	try {
-    		// Execute a query	
-			r = state.executeQuery(query);
-	    	
-			int i = 0;
-			// Fill Map (model)
-			while(r.next()){
-	    		model.put(i, new Contact(r.getString("Nom"), r.getString("Prenom"), r.getString("Mail")));
-	    		i+=1;
-	    	}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-		
-		return model;
-	}
-
-	@Override
 	public Hashtable<Integer, Pays> BuildModelPays(String query, Statement state) {
 		// TODO Auto-generated method stub
 		
 		ResultSet r = null;
-    	Hashtable<Integer, Pays> model = new Hashtable<>();
+    	Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();
     	
     	try {
     		// Execute a query	
@@ -57,7 +27,7 @@ public class BDDModel implements IModel{
 			int i = 0;
 			// Fill Map (model)
 			while(r.next()){
-	    		model.put(i, new Pays(r.getInt("Id_Pays"), r.getString("Nom_Pays")));
+	    		model.put(i, new Pays(r.getInt("Id_Pays"), r.getString("Nom_Pays"),r.getString("Devise")));
 	    		i+=1;
 	    	}
 		} catch (SQLException e) {
@@ -85,7 +55,7 @@ public class BDDModel implements IModel{
     	//second connection with the database
 		try {
 			
-			c2 = DriverManager.getConnection("jdbc:mysql://localhost/mydatabase","root","");
+			c2 = DriverManager.getConnection("jdbc:mysql://localhost/mydatabase","root","toor");
 			state2 = c2.createStatement();
 			
 		} catch (SQLException e1) {
@@ -106,20 +76,15 @@ public class BDDModel implements IModel{
 				//recuperation de la categorie dans la base de données
 				Categorie cat = new Categorie(r.getInt("Id_Categorie"), r.getString("Nom_Categorie"));
 				String name = r.getString("Nom_Categorie");
-				
-				
+							
 				//recuperation des sous categories associées
 				String q =  "select Id_Categoriespec, Intitule from categoriespec where Nom_Categorie = " + "\""+ name + "\"";
-				r2 = state2.executeQuery(q);
+				r2 = state2.executeQuery(q);				
 				
-				
-				while(r2.next()){
-					
-					cat.sousCategorie.add(new Categorie(r2.getInt("Id_Categoriespec"), r2.getString("Intitule")));
-					
+				while(r2.next()){					
+					cat.sousCategorie.add(new Categorie(r2.getInt("Id_Categoriespec"), r2.getString("Intitule")));					
 				}
-				
-				
+								
 	    		model.put(i, cat);
 	    		i+=1;
 	    		

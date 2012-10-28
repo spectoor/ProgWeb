@@ -55,9 +55,7 @@ public class finishConnectionController {
 					HttpSession session = request.getSession();				
 					session.setAttribute("userName", login);
 					session.setAttribute("autorisation",profil.getAdmin());
-				}				
-								
-				
+				}															
 
 		    	// To the View
 		        return new ModelAndView("finishConnection", "bdd", model);

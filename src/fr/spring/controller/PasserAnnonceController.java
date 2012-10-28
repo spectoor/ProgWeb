@@ -28,9 +28,9 @@ public class PasserAnnonceController {
 	    	
 			mesPays = new BDDModel();
 			mesCategories = new BDDModel();
-			Hashtable<Integer, Pays> modelPays = mesPays.BuildModelPays("select Id_Pays, Nom_Pays from pays order by Nom_Pays desc", StatementMysql.stat);
+			Hashtable<Integer, Pays> modelPays = mesPays.BuildModelPays("select * from pays order by Nom_Pays desc", StatementMysql.stat);
 			
-			Hashtable<Integer,Categorie> modelCategorie = mesCategories.BuildModelCategorie("select Id_Categorie, Nom_Categorie from categories", StatementMysql.stat);
+			Hashtable<Integer,Categorie> modelCategorie = mesCategories.BuildModelCategorie("select * from categories", StatementMysql.stat);
 			
 			model.put("pays", modelPays);
 			model.put("categories",modelCategorie);

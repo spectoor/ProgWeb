@@ -1,11 +1,7 @@
 package fr.spring.objects;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Hashtable;
-
-import fr.spring.model.BDDModel;
 
 public class StatementMysql {
 	public static java.sql.Statement stat;
@@ -19,7 +15,7 @@ public class StatementMysql {
     		// Database type chooser    		
 			Class.forName("com.mysql.jdbc.Driver");
 			// Connection to database (jdbc:typedb://address/database, "user", "password")
-			c = DriverManager.getConnection("jdbc:mysql://localhost/mydatabase","root","");
+			c = DriverManager.getConnection("jdbc:mysql://localhost/mydatabase","root","toor");
 			// handle on user's action
 			
 			stat= c.createStatement();

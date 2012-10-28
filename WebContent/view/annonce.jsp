@@ -11,9 +11,7 @@
 		model = (Hashtable<String, Object>)request.getAttribute("bdd");
 		
 		modelCategories = (Hashtable<Integer, Categorie>)model.get("categories");
-		modelAnnonces = (Hashtable<Integer, Annonce>)model.get("annonces");
-		
-		//String NomPays = (String)model.get("pays");
+		modelAnnonces = (Hashtable<Integer, Annonce>)model.get("annonces");				
 								
 		String pays = request.getParameter("country");
 				

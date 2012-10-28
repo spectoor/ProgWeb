@@ -16,15 +16,11 @@ public class DeconnectController {
 	@RequestMapping("/deconnect")
     public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) {
  
-    	// Database test   	
-    	
+    	// Database test   	    	
     	Hashtable<Integer, Pays> model = new Hashtable<Integer, Pays>();
-    	
-    					
+    	    					
 	   //disable the session
-    	request.getSession().invalidate();
-    
-    	
+    	request.getSession().invalidate();    
     	
     	// To the View
         return new ModelAndView("deconnect", "bdd", model);
