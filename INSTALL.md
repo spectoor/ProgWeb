@@ -1,5 +1,5 @@
 
-						::: PRE REQUIS POUR INSTALLATION :::
+					::: PRE REQUIS POUR INSTALLATION :::
 
 	-	Machine debian avec accès internet pour l'installation des paquets
 	-	Adresse IP fixe pour le serveur	
@@ -7,7 +7,13 @@
 
 					::: PROCEDURE D'INSTALLATION :::
 
-	-	Télécharger via une connexion SCP/FTP l'archive ProgWeb.tar.gz dans le serveur
+	-	Télécharger via une connexion SCP/FTP l'archive ProgWeb.zip dans le serveur
+	- 	L'archive Progweb.zip contient les fichiers suivants:
+			- DB.sql (base de données de l'application)
+			- INSTALL.sh (script d'installation à executer sur la machine serveur)
+			- ProgWeb.war (archive de l'application web)
+			- INSTALL.md (procedure d'installation)
+			- README.md (Présentation et description de l'application)
 	-	Se connecter au serveur en tant que superutilisateur
 	-	Créer un répertoire via la commande "mkdir /tmp/archive_web"
 	-	Mettre l'archive dan un dossier dont le chemin est /tmp/archive_web
