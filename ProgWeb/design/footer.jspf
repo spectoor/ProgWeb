@@ -1,0 +1,200 @@
+  <hr>
+
+  <footer>
+        <p>&copy; ESIEA 2012 <br/> Designed by SAID OMAR Mahamoud and FAUSTHER Ulrich</p>
+        <p>
+        	<a href="#" onClick="showModalInfos()"> Informations legales</a> <wbr/> <wbr/>  |
+        	<a href="#" onClick="showModalQui()"> Qui sommes-nous</a> <wbr/> <wbr/>  |
+        	<a href="#" onClick="showModalContact()"> Nous contacter </a>
+        </p>      
+  </footer>
+
+    <!-- Modal -->
+		<div class="modal hide fade in" id="modalInfos" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
+				<h3 id="myModalLabel">Informations legales</h3>
+			</div>
+		
+			<div class="modal-body">
+				<h2>AWANA W'AFRICA!</h2>
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+			</div>
+		
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" onclick="closeModalInfos()">Close</button>				
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript"> 
+ 		
+	      function closeModalInfos(){	    	  
+	    	  $('#modalInfos').modal('hide');
+	      }
+	      
+	      function showModalInfos(){	    	  
+	    	  $('#modalInfos').modal('show');
+	    	  
+	      }
+  
+	  </script>
+	  
+	  
+	  
+	  <!-- Modal -->
+		<div class="modal hide fade in" id="modalQui" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" ><i class="icon-remove navbar-link"></i></button>
+				<h3 id="myModalLabel">Qui sommes-nous</h3>
+			</div>
+		
+			<div class="modal-body">
+				<h2>AWANA W'AFRICA!</h2>
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		<p>
+        			This is a template for a simple marketing or informational website. It includes a large callout 
+        			called the hero unit and three supporting pieces of content. Use it as a starting point to create 
+        			something more unique.        		
+        		</p>
+        		
+        		
+			</div>
+		
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" onclick="closeModalInfos()">Close</button>				
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript"> 
+ 		
+	      function closeModalQui(){	    	  
+	    	  $('#modalQui').modal('hide');
+	      }
+	      
+	      function showModalQui(){	    	  
+	    	  $('#modalQui').modal('show');
+	    	  
+	      }
+  
+	  </script>
+	  
+	  
+	  
+	  
+	  
+	  
+	  <!-- Modal -->
+		<div class="modal hide fade" id="modalContact" tabindex="-1">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >X</button>
+				<h3 id="myModalLabel">Nous contacter</h3>
+			</div>
+		
+			<div class="modal-body">
+				<h2>AWANA W'AFRICA!</h2>
+				<h4>Adresse:</h4>
+				<address>
+					15 avenue General Dblezo <br/> 
+					53000 Laval France	
+				
+				</address>
+				
+				<h4>Tel:</h4>
+				<p> Mr Jamal Gilb <br/> 0620679865 </p>
+				
+				<h4>Email:</h4>
+				<a href="mailto:contact@admin.fr"> contact@admin.fr </a>
+      		
+			</div>
+		
+			<div class="modal-footer">							
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript"> 
+ 		
+	      function closeModalContact(){	    	  
+	    	  $('#modalContact').modal('hide');
+	      }
+	      
+	      function showModalContact(){	    	  
+	    	  $('#modalContact').modal('show');
+	    	  
+	      }
+  
+	  </script>
+	  
+	  
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="design/js/jquery-1.8.2.js"></script>
+    <script src="design/js/jquery.alert.js"></script>
+    <script src="design/js/bootstrap.js"></script>
+    <script src="design/js/bootstrap-modal.js"></script>
+    
+
+  </body>
+</html>

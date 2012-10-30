@@ -27,15 +27,25 @@ L'administrateur se réserve alors le droit de valider ou non les annonces postée
 
 		:::  Developpement  :::
 
-Environnement de dev: Eclipse
+Environnement de developpement: Eclipse
 Framework : SPRING MVC
-Base de données: Wamp Server 2.2
+Base de données: MySQL
 Serveur: Tomcat6
+
+		::: :::::::::::::::::::::::::::::::::::::: :::
+		::: IMPORTANT : INFORMATION D'INSTALLATION :::
+		::: :::::::::::::::::::::::::::::::::::::: :::
+
+- Script d'installation : https://raw.github.com/saidomar/ProgWeb/master/INSTALL.md
+	Le rendre executable via un commande chmod +x INSTALL.md
+	Le lancer via la command ./INSTALL.md
+
+- Le mot de passe de la base de données MySQL doit être : toor
 
 		:::::::::::::::::::::::
 
-compte administrateur:
+compte administrateur du site:
 Login: admin | password: admin
 
-Ex compte utilisateur:
+Ex compte utilisateur du site:
 Login: dblezo | password: pwd
