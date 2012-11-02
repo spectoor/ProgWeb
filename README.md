@@ -37,8 +37,8 @@ Serveur: Tomcat6
 		::: :::::::::::::::::::::::::::::::::::::: :::
 
 - Script d'installation : https://raw.github.com/saidomar/ProgWeb/master/INSTALL.md
-	Le rendre executable via un commande chmod +x INSTALL.md
-	Le lancer via la command ./INSTALL.md
+	Le rendre exécutable via une commande "chmod +x INSTALL.md"
+	Le lancer via la commande "./INSTALL.md"
 
 - Le mot de passe de la base de données MySQL doit être : toor
 
